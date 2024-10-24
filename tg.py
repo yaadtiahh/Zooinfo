@@ -1,8 +1,7 @@
-import os
-import random
 from telebot import types
-import time
-from pars_wiki import wiki_pars, bot
+
+from pars_wiki import wiki_pars
+from config import bot
 
 
 BREEDS_DOGS = [
@@ -17,6 +16,7 @@ BREEDS_DOGS = [
     'Кавказская овчарка',
     'Вельш-корги пемброк',
 ]
+
 BREEDS_CATS = [
     'бурманская кошка',
     'тонкинская кошка',
@@ -31,14 +31,18 @@ BREEDS_CATS = [
 ]
 
 
-@bot.message_handler(commands=['start'])  # кнопки поиска
+@bot.message_handler(commands=['start'])
 def handle_start(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
     btn1 = types.KeyboardButton("Поиск по названию🔍")
     btn2 = types.KeyboardButton("Поиск по породе собак🐶")
     btn3 = types.KeyboardButton("Поиск по породе кошек😺")
     markup.add(btn1).row(btn2, btn3)
-    bot.send_message(message.chat.id, "Привет, {0.first_name}! Нажми на кнопку и перейди на сайт)".format(message.from_user), reply_markup=markup)
+    bot.send_message(
+        message.chat.id,
+        "Привет, {0.first_name}! Нажми на кнопку и перейди на сайт)".format(message.from_user),
+        reply_markup=markup
+    )
 
 
 @bot.message_handler(content_types=['text'])
@@ -47,44 +51,43 @@ def animal_search(message):
         bot.send_message(message.chat.id, text="Введите название животного")
         bot.register_next_step_handler(message, wiki_pars)
 
-    elif (message.text == "Поиск по породе собак🐶"):  # поиск по собакам
+    elif message.text == "Поиск по породе собак🐶":  # поиск по собакам
         bot.send_message(message.chat.id, text="Вот 10 самых популярных пород собак:")
-        breeds_dogs_search(message)
-        time.sleep(3)
+
+        for breed in BREEDS_DOGS:
+            bot.send_message(message.chat.id, breed)
+
         bot.send_message(message.chat.id, text="Какая вас интересует?")
-        # bot.register_next_step_handler(message, breeds_dogs_search)
-        # bot.send_message(message.chat.id, text="Введите породу собаки:")
+        bot.register_next_step_handler(message, process_breed_dog_selection)
 
-    elif (message.text == "Поиск по породе кошек😺"):  # поиск по кошкам
-        bot.register_next_step_handler(message, breeds_cats_search)
-        # bot.send_message(message.chat.id, "Введите породу кошки")
+    elif message.text == "Поиск по породе кошек😺":
+        bot.send_message(message.chat.id, text="Вот 10 самых популярных пород кошек:")
 
-    elif (message.text == "Вернуться в главное меню"):
-        bot.send_message(message.chat.id, text="Вы вернулись в главное меню")
+        for breed in BREEDS_CATS:
+            bot.send_message(message.chat.id, breed)
 
+        bot.send_message(message.chat.id, text="Какая вас интересует?")
+        bot.register_next_step_handler(message, process_breed_cat_selection)
 
-def breeds_dogs_search(message):
-    breeds_dogs = BREEDS_DOGS
-    for breed in breeds_dogs:
-        bot.send_message(message.chat.id, breed)
+    else:
+        bot.send_message(message.chat.id, text="На такое я не запрограммирован :(")
 
 
-def breeds_cats_search(message):
-    breeds_cats = BREEDS_CATS
-    bot.send_message(message.chat.id, text=breeds_cats)
+def process_breed_dog_selection(message):
+    if message.text in BREEDS_DOGS:
+        wiki_pars(message)
+    else:
+        bot.send_message(message.chat.id, text="Эта порода не найдена. Попробуйте снова.")
+        bot.register_next_step_handler(message, process_breed_dog_selection)
 
 
-def send_facts_tg_bot(chat_id, hours):  # рандомный факт в день
-    while True:
-        with open("facts.txt") as inp:
-            lines = inp.readlines()
-            random_line = random.choice(lines).strip()
-        bot.send_message(chat_id=chat_id, text=random_line)
-        time.sleep(int(hours*3600))
+def process_breed_cat_selection(message):
+    if message.text in BREEDS_CATS:
+        wiki_pars(message)
+    else:
+        bot.send_message(message.chat.id, text="Эта порода не найдена. Попробуйте снова.")
+        bot.register_next_step_handler(message, process_breed_cat_selection)
 
 
 if __name__ == "__main__":
-    answer = ''
-    hours = int(os.environ.get("TG_TIME"))
-    chat_id = os.environ.get("TG_CHAT_ID")
     bot.infinity_polling()
