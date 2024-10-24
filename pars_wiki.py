@@ -1,17 +1,10 @@
-import wikipedia
-from bs4 import BeautifulSoup
 import requests
-import os
-import telebot
-from dotenv import load_dotenv
+from bs4 import BeautifulSoup
+import wikipedia
+from config import bot
 
 
-load_dotenv()
-tg_bot_token = os.environ.get("TG_BOT_TOKEN")
-bot = telebot.TeleBot(tg_bot_token)
-
-
-def wiki_pars(message):  # парсер википедии на поиск по названию
+def wiki_pars(message):
     global answer
     answer = message.text
     wikipedia.set_lang("ru")
@@ -21,4 +14,4 @@ def wiki_pars(message):  # парсер википедии на поиск по 
     title = soup.find('title')
     info = wikipedia.summary(title)
     bot.send_message(message.chat.id, text=info)
-    bot.send_message(message.chat.id, text=f"https://ru.wikipedia.org/wiki/{answer}")
+    bot.send_message(message.chat.id, text=f"Ссылка на статью: https://ru.wikipedia.org/wiki/{answer}")
