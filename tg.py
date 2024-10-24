@@ -5,16 +5,16 @@ from config import bot
 
 
 BREEDS_DOGS = [
-    'Немецкий шпиц',
-    'Йоркширский терьер',
-    'Чихуахуа',
-    'Немецкая овчарка',
-    'Лабрадор-ретривер',
-    'Хаски',
-    'Джек-рассел-терьер',
-    'Среднеазиатская овчарка',
-    'Кавказская овчарка',
-    'Вельш-корги пемброк',
+    'немецкий шпиц',
+    'йоркширский терьер',
+    'чихуахуа',
+    'немецкая овчарка',
+    'лабрадор-ретривер',
+    'хаски',
+    'джек-рассел-терьер',
+    'среднеазиатская овчарка',
+    'кавказская овчарка',
+    'вельш-корги пемброк',
 ]
 
 BREEDS_CATS = [
@@ -74,7 +74,7 @@ def animal_search(message):
 
 
 def process_breed_dog_selection(message):
-    if message.text in BREEDS_DOGS:
+    if message.text.lower() in BREEDS_DOGS:
         wiki_pars(message)
     else:
         bot.send_message(message.chat.id, text="Эта порода не найдена. Попробуйте снова.")
@@ -82,7 +82,7 @@ def process_breed_dog_selection(message):
 
 
 def process_breed_cat_selection(message):
-    if message.text in BREEDS_CATS:
+    if message.text.lower() in BREEDS_CATS:
         wiki_pars(message)
     else:
         bot.send_message(message.chat.id, text="Эта порода не найдена. Попробуйте снова.")
