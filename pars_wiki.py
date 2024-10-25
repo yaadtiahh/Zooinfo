@@ -6,7 +6,7 @@ from config import bot
 
 def wiki_pars(message):
     global answer
-    answer = message.text
+    answer = message.text.replace(' ', '_')
     wikipedia.set_lang("ru")
     response_text = requests.get(f"https://ru.wikipedia.org/wiki/{answer}?redirect=no")
     response_text.raise_for_status()
@@ -17,6 +17,5 @@ def wiki_pars(message):
     text = soup_text.find('title')
     photo = soup_photo.find('img')
     info = wikipedia.summary(text, 4)
-    print(photo["src"][2:])
     bot.send_photo(message.chat.id, photo=photo["src"][2:], caption=info)
-    bot.send_message(message.chat.id, text=f"Ссылка на статью: https://ru.wikipedia.org/wiki/{answer}".replace(' ', '_'))
+    bot.send_message(message.chat.id, text=f"Ссылка на статью: https://ru.wikipedia.org/wiki/{answer}")
