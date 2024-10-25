@@ -14,10 +14,12 @@
 ### Требования
 - Python 3.x
 - Библиотеки:
-  - `python-telegram-bot`
   - `requests`
   - `beautifulsoup4`
   - `python-dotenv`
+  - `django-sheduler`
+  - `telebot`
+  - `wikipedia`
 ## Как установить
 - Используйте pip (или pip3, есть конфликт с Python2) для установки зависимостей:
 ```
