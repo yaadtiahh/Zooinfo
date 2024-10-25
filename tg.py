@@ -36,21 +36,20 @@ BREEDS_CATS = [
 
 @bot.message_handler(commands=['start'])
 def handle_start(message):
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
-    btn1 = types.KeyboardButton("Поиск по названию🔍")
-    btn2 = types.KeyboardButton("Поиск по породе собак🐶")
-    btn3 = types.KeyboardButton("Поиск по породе кошек😺")
-    markup.add(btn1).row(btn2, btn3)
-
     markup = types.InlineKeyboardMarkup()
     button1 = types.InlineKeyboardButton("Сайт", url='https://habr.com/ru/all/')
     markup.add(button1)
     bot.send_message(
         message.chat.id,
-        "Привет, {0.first_name}! Выбери вид поиска или же перейди на сайт с увеличенным функционалом!".format(message.from_user),
+        "Привет, {0.first_name}! Это наш бот, можешь нажать на кнопку и перейти на сайт с увеличенным функционалом".format(message.from_user),
         reply_markup=markup
     )
-
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
+    btn1 = types.KeyboardButton("Поиск по названию🔍")
+    btn2 = types.KeyboardButton("Поиск по породе собак🐶")
+    btn3 = types.KeyboardButton("Поиск по породе кошек😺")
+    markup.add(btn1).row(btn2, btn3)
+    bot.send_message(message.chat.id, "Выберите тип поиска животных:", reply_markup=markup)
 
 @bot.message_handler(content_types=['text'])
 def animal_search(message):
