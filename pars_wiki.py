@@ -19,4 +19,4 @@ def wiki_pars(message):
     info = wikipedia.summary(text, 4)
     print(photo["src"][2:])
     bot.send_photo(message.chat.id, photo=photo["src"][2:], caption=info)
-    bot.send_message(message.chat.id, text=f"Ссылка на статью: https://ru.wikipedia.org/wiki/{answer}")
+    bot.send_message(message.chat.id, text=f"Ссылка на статью: https://ru.wikipedia.org/wiki/{answer}".replace(' ', '_'))
