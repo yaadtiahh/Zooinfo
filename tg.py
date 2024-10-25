@@ -41,9 +41,13 @@ def handle_start(message):
     btn2 = types.KeyboardButton("Поиск по породе собак🐶")
     btn3 = types.KeyboardButton("Поиск по породе кошек😺")
     markup.add(btn1).row(btn2, btn3)
+
+    markup = types.InlineKeyboardMarkup()
+    button1 = types.InlineKeyboardButton("Сайт", url='https://habr.com/ru/all/')
+    markup.add(button1)
     bot.send_message(
         message.chat.id,
-        "Привет, {0.first_name}! Нажми на кнопку и перейди на сайт)".format(message.from_user),
+        "Привет, {0.first_name}! Выбери вид поиска или же перейди на сайт с увеличенным функционалом!".format(message.from_user),
         reply_markup=markup
     )
 
