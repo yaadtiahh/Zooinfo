@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import wikipedia
-from config import bot
+from bot.config import bot
 
 
 def wiki_pars(message):

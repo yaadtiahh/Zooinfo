@@ -1,7 +1,7 @@
 from telebot import types
 
-from pars_wiki import wiki_pars
-from config import bot
+from bot.pars_wiki import wiki_pars
+from bot.config import bot
 
 
 BREEDS_DOGS = [
@@ -50,6 +50,7 @@ def handle_start(message):
     btn3 = types.KeyboardButton("Поиск по породе кошек😺")
     markup.add(btn1).row(btn2, btn3)
     bot.send_message(message.chat.id, "Выберите тип поиска животных:", reply_markup=markup)
+
 
 @bot.message_handler(content_types=['text'])
 def animal_search(message):

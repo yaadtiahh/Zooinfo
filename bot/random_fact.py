@@ -1,7 +1,7 @@
 import schedule
 import time
 import random
-from config import bot, tg_chat_id
+from bot.config import bot, tg_chat_id
 
 
 def send_message():
