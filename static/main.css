@@ -1,0 +1,104 @@
+
+
+body {
+  box-sizing: border-box;
+  margin: 0px;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+  height: 76px;
+  background-color: rgba(249, 126, 39, 0.684);
+  border-bottom: 1px solid #f8E0FB;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 70px;
+}
+
+header img {
+  width: 151px;
+  height: 40px;
+  margin-right: 32px;
+  /* margin: 18px auto; */
+}
+
+.menu__wrapper {
+  display: flex;
+}
+
+.menu__wrapper a {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+  text-decoration: none;
+  display: flex;
+  margin-right: 32px;
+  white-space: nowrap;
+  opacity: 0.5;
+}
+
+/* section__searchAnimals */
+
+.section__searchAnimals {
+  display: flex;
+  flex-flow: column;
+}
+
+.section__searchAnimals h1 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 96px;
+  color: #000000;
+  text-shadow: -5px 5px 0px rgba(249, 126, 39);
+  padding-top: 117px;
+  margin: 0 auto;
+}
+
+.section__searchAnimals p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #c66401;
+  padding-top: 32px;
+  margin-bottom: 32px;
+}
+
+/* search start */
+
+.section__searchAnimals .search-box {
+  display: flex;
+  align-items: center;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 0 auto;
+  width: 850px;
+  height: 70px;
+}
+
+.section__searchAnimals .icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.section__searchAnimals .search {
+  font-size: 16px;
+  outline: none;
+  border: none; 
+  flex: 1;
+} 
+
+/* search end */
+
+
+

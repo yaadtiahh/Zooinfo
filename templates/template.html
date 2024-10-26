@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/main.css">
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+  <!-- header start -->
+  <header>
+    <div class="menu__wrapper">
+      <a href="#">Home</a>
+      <a href="#">University</a>
+      <a href="#">Courses</a>
+    </div>
+    <img src="../img/FOX.PNG">
+    <div class="menu__wrapper">
+      <a href="#">Use cases</a>
+      <a href="#">Plans</a>
+      <a href="#">Resources</a>
+    </div>
+  </header>
+  <!-- header end -->
+
+  {% block body %}{% endblock %}
+
+  <!-- footer start -->
+  <footer>
+
+  </footer>
+  <!-- footer end -->
+</body>
+</html>
