@@ -6,15 +6,22 @@
 
 
 {% block body %}
-  <!-- section__searchAnimals start -->
-
-  <section class="section__searchAnimals">
-    <h1>Найди свое<br>любимое животное!</h1>
-    <p>Этот поиск предзначен для ... Да хрен его знает пока зачем,<br>но че нибудь мы сюда напишем :]</p>
-    <div class="search-box">
-      <img src="../templates/img/Search_icon.png" alt="Search Icon" class="icon">
-      <input type="text" name="text" class="search" placeholder="Search here!">
-    </div>
+  <section>
+    <div class='air air1'></div>
+    <div class='air air2'></div>
+    <div class='air air3'></div>
+    <div class='air air4'></div>
+  
+    <!-- section__searchAnimals start -->
+    <section class="section__searchAnimals">
+      <h1>Найди свое<br>любимое животное!</h1>
+      <p>Этот поиск предзначен для ... Да хрен его знает пока зачем,<br>но че нибудь мы сюда напишем :]</p>
+      <div class="search-box">
+        <img src="static/img/Search_icon.png" alt="Search Icon" class="icon">
+        <input type="text" id="animated-input" name="text" class="search" placeholder="">
+        <script src="/static/js/script.js"></script>
+      </div>
+    </section>
+    <!-- section__searchAnimals end -->
   </section>
-  <!-- section__searchAnimals end -->
 {% endblock %}
