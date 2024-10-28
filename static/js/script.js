@@ -8,7 +8,7 @@ function typePlaceholder() {
         currentText += placeholderText[index];
         input.setAttribute("placeholder", currentText);
         index++;
-        setTimeout(typePlaceholder, 100); // Скорость набора текста (в миллисекундах)
+        setTimeout(typePlaceholder, 120); // Скорость набора текста (в миллисекундах)
     }
 }
 
