@@ -1,6 +1,6 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from pars_wiki import wiki_pars_web
 
 
 app = Flask(__name__)
@@ -11,30 +11,32 @@ db = SQLAlchemy(app)
 app.app_context().push()
 
 
-# class Article(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     # Тип данных int, primary_key=True - уникальность каждого id
-#     title = db.Column(db.String(100), nullable=False)
-#     intro = db.Column(db.String(300), nullable=False)
-#     # макс. 100/300 символов, nullable=False - нельзя указать пустое знач.
-#     text = db.Column(db.Text, nullable=False)
-#     # Text - потому что статья может быть много символов,
-#     # nullable=False - нельзя указать пустое знач.
-#     date = db.Column(db.DateTime, default=datetime.utcnow)
-
-#     def __repr__(self):
-#         return '<Article %r' % self.id  # Article выдается сам объект и его id
-
-
 @app.route('/')
 @app.route('/home')
 def index():
-    return render_template("index.html")
+    return render_template('index.html')
 
 
 @app.route('/about')
 def about():
-    return render_template("about.html")
+    return render_template('contacts.html')
+
+
+@app.route('/result', methods=['get', 'post'])
+def result():
+    if request.method == "POST":
+        animal = request.form['text']
+        animal.replace(' ', '_')
+        pars = wiki_pars_web(animal)
+        return render_template(
+            "result.html",
+            animal=animal,
+            image_url=pars[0],
+            article_url=pars[1],
+            info=pars[2]
+        )
+    else:
+        return "Get запрост"
 
 
 if __name__ == '__main__':
