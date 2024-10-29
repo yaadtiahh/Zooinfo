@@ -1,6 +1,6 @@
 from telebot import types
 
-from bot.pars_wiki import wiki_pars
+from pars_wiki import wiki_pars_tg
 from bot.config import bot
 
 
@@ -56,7 +56,7 @@ def handle_start(message):
 def animal_search(message):
     if message.text == "Поиск по названию🔍":  # поиск по названию
         bot.send_message(message.chat.id, text="Введите название животного")
-        bot.register_next_step_handler(message, wiki_pars)
+        bot.register_next_step_handler(message, wiki_pars_tg)
 
     elif message.text == "Поиск по породе собак🐶":  # поиск по собакам
         bot.send_message(message.chat.id, text="Вот 10 самых популярных пород собак:")
@@ -82,7 +82,7 @@ def animal_search(message):
 
 def process_breed_dog_selection(message):
     if message.text.lower() in BREEDS_DOGS:
-        wiki_pars(message)
+        wiki_pars_tg(message)
     else:
         bot.send_message(message.chat.id, text="Эта порода не найдена. Попробуйте снова.")
         bot.register_next_step_handler(message, process_breed_dog_selection)
@@ -90,7 +90,7 @@ def process_breed_dog_selection(message):
 
 def process_breed_cat_selection(message):
     if message.text.lower() in BREEDS_CATS:
-        wiki_pars(message)
+        wiki_pars_tg(message)
     else:
         bot.send_message(message.chat.id, text="Эта порода не найдена. Попробуйте снова.")
         bot.register_next_step_handler(message, process_breed_cat_selection)
