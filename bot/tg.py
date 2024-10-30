@@ -1,3 +1,4 @@
+import random
 from telebot import types
 
 from pars_wiki import wiki_pars_tg
@@ -78,6 +79,14 @@ def animal_search(message):
 
     else:
         bot.send_message(message.chat.id, text="На такое я не запрограммирован :(")
+
+
+@bot.message_handler(content_types=['random_fact'])
+def send_message(message):
+    with open("facts.txt") as inp:
+        lines = inp.readlines()
+        random_line = random.choice(lines).strip()
+    bot.send_message(message.chat.id, random_line)
 
 
 def process_breed_dog_selection(message):
