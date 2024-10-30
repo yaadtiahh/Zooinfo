@@ -31,7 +31,7 @@ def result():
         return render_template(
             "result.html",
             animal=animal,
-            image_url=pars[0],
+            image_url=f"https://{pars[0]}",
             article_url=pars[1],
             info=pars[2]
         )

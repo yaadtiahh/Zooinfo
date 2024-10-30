@@ -17,7 +17,7 @@ def wiki_pars_tg(message):
     text = soup_text.find('title')
     photo = soup_photo.find('img')
     info = wikipedia.summary(text, 4)
-    bot.send_photo(photo=photo["src"][2:], caption=info)
+    bot.send_photo(message.chat.id, photo=photo["src"][2:], caption=info)
     bot.send_message(message.chat.id, text=f"Ссылка на статью: https://ru.wikipedia.org/wiki/{answer}")
 
 
