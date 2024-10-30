@@ -108,14 +108,14 @@ form {
 } 
 
 /* search end */
-
+*{
+ margin: 0;
+ padding: 0;
+}
 
 /* BG start */
 
-*{
-  margin: 0;
-  padding: 0;
-}
+
 section{
   position: relative;
   width: 100%;
@@ -178,6 +178,21 @@ section .air.air4{
     background-position-x: -1000px; 
   }
 }
+.info_result{
+    border: solid 5px;
+    border-radius: 10px;
+    justify-content:center;
+    align-items:center;
+    width: 750px;
+    padding: 10px;
+}
+.container{
+    justify-content:center;
+    align-items:center;
+    display:flex;
+    flex-direction: column;
+}
+
 
 /* BG end */
 

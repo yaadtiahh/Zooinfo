@@ -32,7 +32,7 @@ def wiki_pars_web(animal):
     text = soup_text.find('title')
     photo = soup_photo.find('img')
     photo = photo["src"][2:]
-    info = wikipedia.summary(text, 4)
+    info = wikipedia.summary(text)
     link = f'https://ru.wikipedia.org/wiki/{animal}'
     return photo, link, info
 

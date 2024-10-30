@@ -9,13 +9,17 @@
   <div class="result">
     <div class="container">
       <h1>Результаты поиска для {{ animal }}</h1>
-      {% if image_url %}
-        <img src="{{ image_url }}" alt="{{ animal }}">
-      {% else %}
-        <р>Изображение недоступно.</р>
-      {% endif %}
-      <p>{{ info }}</p>
-      <p><a href="{{ article_url }}">Читать далее на Википедии</a></р>
+      <div class = "img_result">
+        {% if image_url %}
+          <img src="{{ image_url }}" alt="{{ animal }}">
+        {% else %}
+          <р>Изображение недоступно.</р>
+        {% endif %}
+      </div>
+      <div class="info_result">
+        <p>{{ info }}</p>
+        <p><a href="{{ article_url }}">Читать далее на Википедии</a></р>
+      </div>
       <p><a href="/home">Назад к поиску</a></р>
     </div>
   </div>
