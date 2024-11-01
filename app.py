@@ -1,6 +1,7 @@
+import random
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-from pars_wiki import wiki_pars_web
+from pars_wiki_web import wiki_pars_web
 
 
 app = Flask(__name__)
@@ -14,7 +15,10 @@ app.app_context().push()
 @app.route('/')
 @app.route('/home')
 def index():
-    return render_template('index.html')
+    with open("static/facts.txt") as inp:
+        lines = inp.readlines()
+        random_fact = random.choice(lines).strip()
+    return render_template('index.html', random_fact=random_fact)
 
 
 @app.route('/about')
@@ -25,16 +29,21 @@ def about():
 @app.route('/result', methods=['get', 'post'])
 def result():
     if request.method == "POST":
-        animal = request.form['text']
+        animal = request.form['text'].lower()
         animal.replace(' ', '_')
-        pars = wiki_pars_web(animal)
-        return render_template(
-            "result.html",
-            animal=animal,
-            image_url=f"https://{pars[0]}",
-            article_url=pars[1],
-            info=pars[2]
-        )
+        results_of_search = wiki_pars_web(animal)
+        is_dict = isinstance(results_of_search, dict)
+
+        if is_dict:
+            return render_template(
+                "result.html",
+                animal=animal,
+                image_url=results_of_search['img_url'],
+                article_url=results_of_search['article_url'],
+                info=results_of_search['info']
+            )
+        else:
+            return render_template("bad_result.html", bad_result=results_of_search)
     else:
         return "Get запрост"
 
