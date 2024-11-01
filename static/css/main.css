@@ -47,6 +47,10 @@ header img {
   opacity: 0.7;
 }
 
+.menu__wrapper img {
+  margin-left: 100px;
+}
+
 /* section__searchAnimals */
 
 .section__searchAnimals {
@@ -92,14 +96,6 @@ header img {
 .section__searchAnimals .search-box form{
   background-color: #ff8821;
 }
-
-/* .section__searchAnimals .search-box input{
-  background-color: #ff8821;
-  width: 500px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-} */
 
 .section__searchAnimals .icon {
   width: 20px;
@@ -276,4 +272,74 @@ section .air.air4{
 
 .bad_result .error {
   animation: move 5s infinite;
+}
+
+.contacts {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 125px 80px 0px 80px;
+}
+
+.contacts form {
+  width: 370px;
+  height: 490px;
+  background-color: white;
+  border-radius: 25px;
+}
+
+
+.contacts .names {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40px;
+  padding-left: 25px;
+  padding-right: 40px;
+}
+
+.contacts .names h1{
+  font-size: 25px;
+}
+
+.contacts h2{
+  font-size: 17px;
+  margin-top: 25px;
+  padding:0px 40px 0px;
+}
+
+.contacts .results_of_work {
+  font-size: 16px;
+  padding-left: 25px;
+  margin-top: 25px;
+  height: 100px;
+}
+
+.contacts .support{
+  margin: 130px 80px 0;
+  font-size: 18px;
+  text-align: center;
+  width: 200px;
+  height: 60px;
+  border: 3px solid #ff8821;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+
+  background-color: rgba(0, 0, 255, 0);
+  transition: background-color 0.5s ease-in-out;
+}
+
+.contacts .support:hover {
+	background: rgba(255, 187, 139, 0.495);
+	color: #e3e3e3;
+}
+
+.support a {
+  text-decoration: none;
+  color: #000000;
 }

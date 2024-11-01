@@ -21,7 +21,7 @@ def index():
     return render_template('index.html', random_fact=random_fact)
 
 
-@app.route('/about')
+@app.route('/contacts')
 def about():
     return render_template('contacts.html')
 
