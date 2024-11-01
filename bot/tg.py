@@ -81,14 +81,6 @@ def animal_search(message):
         bot.send_message(message.chat.id, text="На такое я не запрограммирован :(")
 
 
-@bot.message_handler(content_types=['random_fact'])
-def random_fact(message):
-    with open("static/facts.txt") as inp:
-        lines = inp.readlines()
-        random_fact = random.choice(lines).strip()
-    bot.send_message(message.chat.id, random_fact)
-
-
 def process_breed_dog_selection(message):
     if message.text.lower() in BREEDS_DOGS:
         wiki_pars_tg(message)
