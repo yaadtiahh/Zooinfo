@@ -15,7 +15,7 @@ app.app_context().push()
 @app.route('/')
 @app.route('/home')
 def index():
-    with open("static/facts.txt") as inp:
+    with open("static/facts.txt", encoding="utf8") as inp:
         lines = inp.readlines()
         random_fact = random.choice(lines).strip()
     return render_template('index.html', random_fact=random_fact)
