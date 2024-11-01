@@ -22,7 +22,7 @@ def index():
 
 
 @app.route('/contacts')
-def about():
+def contacts():
     return render_template('contacts.html')
 
 

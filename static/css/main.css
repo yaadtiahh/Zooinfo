@@ -27,7 +27,7 @@ header {
 header img {
   width: 151px;
   height: 40px;
-  margin-right: 32px;
+  /* margin-right: 32px; */
   /* margin: 18px auto; */
 }
 
@@ -48,7 +48,7 @@ header img {
 }
 
 .menu__wrapper img {
-  margin-left: 100px;
+  margin-right: 32px;
 }
 
 /* section__searchAnimals */

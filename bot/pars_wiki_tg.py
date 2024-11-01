@@ -8,6 +8,7 @@ def wiki_pars_tg(message):
     global answer
     answer = message.text.replace(' ', '_')
     wikipedia.set_lang("ru")
+
     try:
         response_text = requests.get(f"https://ru.wikipedia.org/wiki/{answer}?redirect=no")
         response_text.raise_for_status()
@@ -33,6 +34,7 @@ def wiki_pars_tg(message):
 
         bot.send_photo(message.chat.id, photo=results_of_search["photo"], caption=results_of_search["info"])
         bot.send_message(message.chat.id, text=f"Ссылка на статью:{article_url}")
+
     except:
         bot.send_message(message.chat.id, text=f'По запросу "{answer}" ничего не найдено :(')
         bot.send_message(message.chat.id, text="Пожалуйста, проверьте правильность запроса.")
