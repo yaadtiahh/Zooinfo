@@ -1,4 +1,3 @@
-import random
 from telebot import types
 
 from pars_wiki_tg import wiki_pars_tg
