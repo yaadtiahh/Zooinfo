@@ -1,0 +1,20 @@
+{% extends 'template.html' %}
+
+{% block title %}
+  Результат поиска
+{% endblock %}
+
+
+{% block body %}
+  <div class="bad_result">
+    <h1>{{ bad_result }}</h1>
+    <p>Пожалуйста, проверьте правильность запроса.</p>
+    <img src="static/img/error.png" class="error" width="800px" height="300px" alt="ошибка">
+    <div class="back">
+      <form>
+        <a href="/"><img src="static/img/corner-left-up.svg" alt="стрелка" 
+          style="vertical-align: middle" width="20px" height="20px">Назад к поиску</a></p>
+      </form>
+    </div>
+  </div>
+{% endblock %}
