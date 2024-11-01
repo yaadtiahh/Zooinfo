@@ -38,7 +38,7 @@ BREEDS_CATS = [
 @bot.message_handler(commands=['start'])
 def handle_start(message):
     markup = types.InlineKeyboardMarkup()
-    button1 = types.InlineKeyboardButton("Сайт", url='https://habr.com/ru/all/')
+    button1 = types.InlineKeyboardButton("Сайт", url='http://127.0.0.1:5000/home')
     markup.add(button1)
     bot.send_message(
         message.chat.id,
